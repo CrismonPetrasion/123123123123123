@@ -36,15 +36,32 @@ function Notify(Title, Content, SubContent, Duration)
     })
 end
 
-local KeyInput = ""
 _G.Key = "Hello"
 
 local Options = Fluent.Options
 
 do
 
-    function CheckKey()
-        if KeyInput == _G.Key then
+    Tabs.Main:AddParagraph({
+        Title = "Cosmic Hub is a powerful cheat.",
+        Content = "Note: Cosmic Hub is currently under development and may be unstable."
+    })
+
+    Tabs.Key:AddInput("Input", {
+        Title = "Enter Key",
+        Default = "None",
+        Placeholder = "None",
+        Numeric = false, -- Only allows numbers
+        Finished = true, -- Only calls callback when you press enter
+        Callback = function(Value)
+            if Value == _G.Key then
+                CheckKey(Value)
+            end
+        end
+    })
+    
+    function CheckKey(Value)
+        if Value == _G.Key then
             if game.PlaceId == 6403373529 then 
                 local bypass;
             
@@ -1222,30 +1239,6 @@ do
             end
         end
     end
-
-    Tabs.Main:AddParagraph({
-        Title = "Cosmic Hub is a powerful cheat.",
-        Content = "Note: Cosmic Hub is currently under development and may be unstable."
-    })
-
-    Tabs.Key:AddInput("Input", {
-        Title = "Enter Key",
-        Default = "None",
-        Placeholder = "None",
-        Numeric = false, -- Only allows numbers
-        Finished = false, -- Only calls callback when you press enter
-        Callback = function(Value)
-            KeyInput = Value
-        end
-    })
-
-    Tabs.Key:AddButton({
-        Title = "Check Key",
-        Description = "Cheking key that in Input",
-        Callback = function()
-            CheckKey()
-        end
-    })
 
     SaveManager:SetLibrary(Fluent)
     InterfaceManager:SetLibrary(Fluent)
