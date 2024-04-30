@@ -36,7 +36,7 @@ function Notify(Title, Content, SubContent, Duration)
     })
 end
 
-_G.KeyInput = "string"
+local KeyInput = ""
 _G.Key = "Hello"
 
 local Options = Fluent.Options
@@ -44,7 +44,7 @@ local Options = Fluent.Options
 do
 
     function CheckKey()
-        if Key == KeyInput then
+        if KeyInput == _G.Key then
             if game.PlaceId == 6403373529 then 
                 local bypass;
             
