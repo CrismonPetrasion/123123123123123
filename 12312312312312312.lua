@@ -46,19 +46,6 @@ do
         Title = "Cosmic Hub is a powerful cheat.",
         Content = "Note: Cosmic Hub is currently under development and may be unstable."
     })
-
-    Tabs.Key:AddInput("Input", {
-        Title = "Enter Key",
-        Default = "None",
-        Placeholder = "None",
-        Numeric = false, -- Only allows numbers
-        Finished = true, -- Only calls callback when you press enter
-        Callback = function(Value)
-            if Value == _G.Key then
-                CheckKey(Value)
-            end
-        end
-    })
     
     function CheckKey(Value)
         if Value == _G.Key then
@@ -1240,6 +1227,19 @@ do
         end
     end
 
+    Tabs.Key:AddInput("Input", {
+        Title = "Enter Key",
+        Default = "None",
+        Placeholder = "None",
+        Numeric = false, -- Only allows numbers
+        Finished = true, -- Only calls callback when you press enter
+        Callback = function(Value)
+            if Value == _G.Key then
+                CheckKey(Value)
+            end
+        end
+    })
+    
     SaveManager:SetLibrary(Fluent)
     InterfaceManager:SetLibrary(Fluent)
     SaveManager:IgnoreThemeSettings()
